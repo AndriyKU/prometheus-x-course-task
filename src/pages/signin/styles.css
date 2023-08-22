@@ -1,0 +1,102 @@
+/*
+i colori, i font, e gli effetti (:hover, transition, :focus ...) possono essere personalizzati. Io ancora devo pensarci quindi non l'ho aggiunti.
+*/
+
+.signin__container {
+  background-color: #bc8023;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* height: calc(100vh - 210px); */
+  height: 100vh;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 30%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 12px solid #888;
+  background-color: rgba(230, 236, 255, 0.5);
+  border-radius: 30px;
+  /* box-shadow: 0px 0px 100px 500px rgb(30, 153, 210); */
+}
+
+.signin__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 158px;
+  height: 158px;
+  border: 2px solid #888;
+  margin-bottom: 40px;
+  background-color: rgba(230, 236, 255, 0.5);
+  border-radius: 50%;
+}
+
+.signin__image > img {
+  width: 160px;
+  height: 160px;
+}
+
+.signin__form {
+  width: 100%;
+}
+
+.signin__form > * {
+  display: block;
+}
+
+.signin__form > label[for="username"] {
+  font-weight: bold;
+  text-align: center;
+}
+
+.signin__form > input[type="text"]::placeholder {
+  color: #000;
+  text-align: center;
+}
+
+.signin__form > input[type="text"] {
+  outline: none;
+  border: 2px solid #000;
+  margin-bottom: 20px;
+  text-align: center;
+  transition: all 0.7s ease-in-out;
+}
+
+.signin__form > input[type="text"]:focus {
+  border: 2px solid rgb(255, 0, 0);
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.signin__form > input[type="text"] {
+  padding: 10px 20px;
+  width: 200px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signin__form > input[type="text"].correct {
+  border: 2px solid rgb(65, 168, 62);
+  background-color: rgba(65, 168, 62, 0.2);
+}
+
+/* @media screen and (min-width: 320px) {
+  .signin__form > input[type="text"] {
+
+    width: calc(100% - 16px);
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .signin__image,
+  .signin__image > img {
+    width: 200px;
+    height: 200px;
+  }
+} */

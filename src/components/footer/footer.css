@@ -1,0 +1,31 @@
+.footer {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-bottom: 2px solid #000;
+  border-top: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2c979;
+  box-shadow: -5px -5px 10px #000;
+  margin-top: 5px;
+}
+
+.footer__text {
+  text-shadow: 0px 0px 5px #c95002;
+  color: #ffa605;
+  background-color: #000;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 5px #c95002;
+}
+
+.footer__text > a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer__text {
+  padding: 10px;
+}

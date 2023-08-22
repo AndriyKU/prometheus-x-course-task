@@ -1,0 +1,126 @@
+.scenario3D {
+  /* perspective: 1000px;
+  perspective-origin: 113% -54%; */
+  padding-right: 25px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+.container-box {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 99%;
+  margin: 3px auto;
+  /* margin: 20px 0; */
+  height: 135px;
+  transform: rotateY(0deg) rotateX(0deg);
+}
+
+.container-box tr.table-recap__order {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 135px;
+  position: absolute;
+  background-color: #edbd8c;
+  background-image: linear-gradient(0deg, #edbd8c 0% 85%, transparent 85%),
+    repeating-linear-gradient(
+      to right,
+      transparent 0% 16%,
+      #f4e0ca 16% 21%,
+      transparent 21%
+    );
+}
+
+.container-box .back {
+  width: 100%;
+  height: 135px;
+  position: absolute;
+  background-color: #edbd8c;
+  transform: translateZ(-200px);
+}
+
+.container-box .top {
+  /* content: ""; */
+  width: 100%;
+  height: 200px;
+  background-color: #d8ac7f;
+  position: absolute;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+  background-image: linear-gradient(0deg, #d8ac7f 0% 85%, transparent 85%),
+    repeating-linear-gradient(
+      to right,
+      transparent 0% 16%,
+      #f4e0ca 16% 21%,
+      transparent 21%
+    );
+}
+
+.container-box .bottom {
+  /* content: ""; */
+  width: 100%;
+  height: 200px;
+  background-color: #d8ac7f;
+  position: absolute;
+  transform-origin: bottom;
+  transform: rotateX(90deg) translateZ(66px);
+}
+
+.container-box .right {
+  /* content: ""; */
+  width: 200px;
+  height: 135px;
+  background-color: #a66f50;
+  position: absolute;
+  transform-origin: right;
+  right: 0;
+  top: 0;
+  transform: rotateY(-90deg);
+}
+
+.container-box .left {
+  width: 200px;
+  height: 135px;
+  background-color: #a66f50;
+  position: absolute;
+  transform-origin: left;
+  left: 0;
+  top: 0;
+  transform: rotateY(90deg);
+}
+
+.container-box tr.table-recap__order,
+.container-box .top,
+.container-box .right,
+.container-box .bottom,
+.container-box .back,
+.container-box .left {
+  border: 1px solid black;
+}
+
+.table-recap__order td {
+  display: flex;
+  width: 20%;
+  text-align: center;
+  padding: 10px;
+  height: 80px;
+  background-color: whitesmoke;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.table-recap__order td:first-of-type,
+.table-recap__order td:last-of-type {
+  margin: 10px;
+}
+
+.count-plus,
+.count-minus {
+  color: red;
+  padding: 20px;
+  border-style: none;
+  cursor: pointer;
+  background-color: inherit;
+  font-size: 24px;
+}
