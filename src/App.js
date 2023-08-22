@@ -26,7 +26,7 @@ function App() {
     localStorage.setItem("booksInCart", JSON.stringify([]));
     setBooksInCart(JSON.parse(localStorage.getItem("booksInCart")));
 
-    fetch("prometheus-x-course-task/database/books.json")
+    fetch("/database/books.json")
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("books", JSON.stringify(data.books));
