@@ -12,7 +12,8 @@ export const Order = ({ title, price, count, totalPrice }) => {
         return order.title === title;
       });
       prev.splice(orderIndex, 1);
-      return [...prev];
+      localStorage.setItem("booksInCart", JSON.stringify([...prev]));
+      return JSON.parse(localStorage.getItem("booksInCart"));
     });
   };
   const decreaseCount = () => {

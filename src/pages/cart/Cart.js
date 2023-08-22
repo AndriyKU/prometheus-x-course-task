@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 export const Cart = () => {
   const { booksInCart, setBooksInCart } = useCart();
   const handleDeleteCart = () => {
-    setBooksInCart([]);
+    localStorage.setItem("booksInCart", JSON.stringify([]));
+    setBooksInCart(JSON.parse(localStorage.getItem("booksInCart")));
   };
   const navigate = useNavigate();
   const handleClick = () => {
@@ -89,7 +90,6 @@ export const Cart = () => {
                     { transform: "translateZ(-75px)", zIndex: 2 },
                     { transform: "translateZ(-150px)", zIndex: 1 },
                   ].map((style, i) => {
-                    console.log(style);
                     return (
                       <div
                         className="longitudinal-wooden-plank"

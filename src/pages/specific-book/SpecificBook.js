@@ -23,10 +23,11 @@ export const SpecificBook = () => {
   const handleClick = (event) => {
     setBooksInCart((prevOrder) => {
       let newOrder = {
-        count: quantity,
+        id: book.id,
+        count: +quantity,
         price: book.price,
         title: book.title,
-        totalPrice: +(+quantity * book.price).toFixed(2),
+        totalPrice: (+quantity * book.price).toFixed(2),
       };
 
       const sameOrder = prevOrder.find((book) => book.title === newOrder.title);
@@ -43,8 +44,11 @@ export const SpecificBook = () => {
           1
         );
       }
-      localStorage.getItem("booksInCart").push(...prevOrder, newOrder);
-      return [...prevOrder, newOrder];
+      localStorage.setItem(
+        "booksInCart",
+        JSON.stringify([...prevOrder, newOrder])
+      );
+      return JSON.parse(localStorage.getItem("booksInCart"));
     });
   };
 
