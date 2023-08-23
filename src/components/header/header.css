@@ -77,17 +77,16 @@
 
 .header__nav-cart > .counter {
   position: absolute;
-  top: 10%;
-  left: 21%;
+  bottom: 48%;
+  left: 19%;
 
-  left: 26%;
   color: #fff;
   background-color: #007acc;
   border: 2px solid silver;
   border-radius: 50%;
   line-height: 20px;
   font-size: 10px;
-  width: 30px;
+  width: 25px;
   text-align: center;
   font-weight: 600;
 }

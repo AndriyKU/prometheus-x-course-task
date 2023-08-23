@@ -146,6 +146,9 @@ container-book
   flex-direction: column;
   justify-content: space-between;
 }
+.container-book .book__back > p:first-of-type {
+  overflow: hidden;
+}
 
 .container-book .book__back::after {
   content: "";

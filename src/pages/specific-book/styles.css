@@ -315,7 +315,7 @@ tags:
 
 .specific-book-section .form input[type="number"]::-webkit-outer-spin-button,
 .specific-book-section .form input[type="number"]::-webkit-inner-spin-button {
-  margin-left: 20px;
+  margin-left: 5px;
 }
 
 .specific-book-section .form__text {

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export const Cart = () => {
   const { booksInCart, setBooksInCart } = useCart();
   const handleDeleteCart = () => {
-    localStorage.setItem("booksInCart", JSON.stringify([]));
+    localStorage.setItem("booksInCart", "[]");
     setBooksInCart(JSON.parse(localStorage.getItem("booksInCart")));
   };
   const navigate = useNavigate();
@@ -39,31 +39,32 @@ export const Cart = () => {
           <figcaption>Cart empty...</figcaption>
         </figure>
       ) : null}
-      <div className="cart-container">
-        <table className="table-recap">
-          <thead>
-            <tr className="table-recap__headers">
-              <th>Book</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            {booksInCart.map((bookOrder) => {
-              return (
-                <Order
-                  title={bookOrder.title}
-                  price={bookOrder.price}
-                  totalPrice={bookOrder.totalPrice}
-                  count={bookOrder.count}
-                  key={bookOrder.id}
-                />
-              );
-            })}
-          </tbody>
-          {booksInCart.length === 0 ? null : (
+      {booksInCart.length === 0 ? null : (
+        <div className="cart-container">
+          <table className="table-recap">
+            <thead>
+              <tr className="table-recap__headers">
+                <th>Book</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              {booksInCart.map((bookOrder) => {
+                return (
+                  <Order
+                    title={bookOrder.title}
+                    price={+bookOrder.price}
+                    totalPrice={+bookOrder.totalPrice}
+                    count={+bookOrder.count}
+                    key={bookOrder.id}
+                  />
+                );
+              })}
+            </tbody>
+
             <tfoot>
               <div className="wooden_scenario3D">
                 <div className="pallet">
@@ -122,16 +123,15 @@ export const Cart = () => {
                 <th colSpan={5}>
                   Total price, $
                   {" " +
-                    booksInCart.reduce(
-                      (total, book) => total + book.totalPrice,
-                      0
-                    )}
+                    booksInCart
+                      .reduce((total, book) => total + book.totalPrice, 0)
+                      .toFixed(2)}
                 </th>
               </tr>
             </tfoot>
-          )}
-        </table>
-      </div>
+          </table>
+        </div>
+      )}
     </section>
   );
 };

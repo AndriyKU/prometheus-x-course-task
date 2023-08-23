@@ -3,7 +3,7 @@ import imageNotFound from "../../images/imageNotFound.png";
 import { Button } from "../../components/button/Button";
 import { useParams } from "react-router-dom";
 import { useBooks } from "../../contextAPI/useBooks";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useCart } from "../../contextAPI/useCart";
 
 export const SpecificBook = () => {
@@ -21,35 +21,37 @@ export const SpecificBook = () => {
   };
 
   const handleClick = (event) => {
-    setBooksInCart((prevOrder) => {
-      let newOrder = {
-        id: book.id,
-        count: +quantity,
-        price: book.price,
-        title: book.title,
-        totalPrice: (+quantity * book.price).toFixed(2),
-      };
+    let newOrder = {
+      id: book.id,
+      count: +quantity,
+      price: book.price,
+      title: book.title,
+      totalPrice: +(+quantity * book.price).toFixed(2),
+    };
 
-      const sameOrder = prevOrder.find((book) => book.title === newOrder.title);
-      if (sameOrder) {
-        newOrder = {
-          ...newOrder,
-          count: newOrder.count + sameOrder.count,
-          totalPrice: newOrder.totalPrice + sameOrder.totalPrice,
-        };
-        prevOrder.splice(
-          /* prevOrder.indexOf(sameOrder) */ prevOrder.findIndex(
-            (order) => order.title === prevOrder.title
-          ),
-          1
-        );
-      }
-      localStorage.setItem(
-        "booksInCart",
-        JSON.stringify([...prevOrder, newOrder])
-      );
-      return JSON.parse(localStorage.getItem("booksInCart"));
-    });
+    const arrayBooks = JSON.parse(localStorage.getItem("booksInCart"));
+    const sameOrder = arrayBooks.find((book) => book.title === newOrder.title);
+    /*    console.log(sameOrder.count, quantity);
+    console.log(sameOrder.count + quantity); */
+    if (sameOrder && sameOrder.count + +quantity > 42) {
+      /* console.log(sameOrder.count + quantity); */
+      return;
+    }
+
+    const sameOrderIndex = arrayBooks.findIndex(
+      (book) => book.title === newOrder.title
+    );
+    if (sameOrder) {
+      newOrder = {
+        ...newOrder,
+        count: newOrder.count + sameOrder.count,
+        totalPrice: +(newOrder.totalPrice + sameOrder.totalPrice).toFixed(2),
+      };
+      arrayBooks.splice(sameOrderIndex, 1);
+    }
+    arrayBooks.push(newOrder);
+    localStorage.setItem("booksInCart", JSON.stringify(arrayBooks));
+    setBooksInCart(JSON.parse(localStorage.getItem("booksInCart")));
   };
 
   return (
@@ -58,6 +60,7 @@ export const SpecificBook = () => {
         <figure className="book__image">
           <img src={book.image || imageNotFound} alt="book" width="300" />
         </figure>
+
         <div className="photo"></div>
         <ul className="book__description-list">
           <div className="wrapper__description">
@@ -98,11 +101,11 @@ export const SpecificBook = () => {
       </article>
       <form className="form" action="../cart/index.html" method="POST">
         <p className="form__text">
-          <strong>Price, $</strong>
-          <b id="single-book-price">{book.price}</b>
+          <strong>Price:</strong>
+          <b id="single-book-price">{book.price} $</b>
         </p>
         <div className="form__text">
-          <label htmlFor="quantity">Count</label>
+          <label htmlFor="quantity">Count:</label>
           <input
             type="number"
             name="quantity"
@@ -114,13 +117,23 @@ export const SpecificBook = () => {
           />
         </div>
         <p className="form__text">
-          <strong>Total price</strong>
-          <b id="total-books-price">{(book.price * quantity).toFixed(2)}</b>
+          <strong>Total price:</strong>
+          <b id="total-books-price">{`${(book.price * quantity).toFixed(
+            2
+          )} $`}</b>
         </p>
         <Button
           text="Add to chart"
           navigation={{ path: "", link: false }}
           functionality={handleClick}
+          disabled={
+            booksInCart.find((bookInCart) => bookInCart.title === book.title)
+              ?.count +
+              +quantity >
+            42
+              ? true
+              : false
+          }
         />
       </form>
     </section>

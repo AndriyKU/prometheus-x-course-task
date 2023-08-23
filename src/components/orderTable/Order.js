@@ -7,35 +7,39 @@ export const Order = ({ title, price, count, totalPrice }) => {
   const [quantity, setQuantity] = useState(count);
   const { setBooksInCart } = useCart();
   const deleteOrder = () => {
-    setBooksInCart((prev) => {
-      const orderIndex = prev.findIndex((order) => {
-        return order.title === title;
-      });
-      prev.splice(orderIndex, 1);
-      localStorage.setItem("booksInCart", JSON.stringify([...prev]));
-      return JSON.parse(localStorage.getItem("booksInCart"));
-    });
+    const ordersInCart = JSON.parse(localStorage.getItem("booksInCart"));
+    const orderIndex = ordersInCart.findIndex((order) => order.title === title);
+    ordersInCart.splice(orderIndex, 1);
+    localStorage.setItem("booksInCart", JSON.stringify(ordersInCart));
+    setBooksInCart(JSON.parse(localStorage.getItem("booksInCart")));
   };
+  console.log(typeof price);
   const decreaseCount = () => {
     if (quantity === 1) return;
-    setBooksInCart((prev) => {
-      const orderIndex = prev.findIndex((order) => order.title === title);
-      --prev[orderIndex].count;
-      (prev[orderIndex].totalPrice -= prev[orderIndex].price).toFixed(2);
-      console.log(prev);
-      return [...prev];
-    });
+    const ordersInCart = JSON.parse(localStorage.getItem("booksInCart"));
+    const orderIndex = ordersInCart.findIndex((order) => order.title === title);
+
+    --ordersInCart[orderIndex].count;
+    ordersInCart[orderIndex].totalPrice = +(
+      ordersInCart[orderIndex].totalPrice - price
+    ).toFixed(2);
+
+    localStorage.setItem("booksInCart", JSON.stringify(ordersInCart));
+    setBooksInCart(JSON.parse(localStorage.getItem("booksInCart")));
     setQuantity((prev) => prev - 1);
   };
   const increaseCount = () => {
     if (quantity === 42) return;
-    setBooksInCart((prev) => {
-      const orderIndex = prev.findIndex((order) => order.title === title);
-      ++prev[orderIndex].count;
-      prev[orderIndex].totalPrice += prev[orderIndex].price;
-      console.log(prev);
-      return [...prev];
-    });
+    const ordersInCart = JSON.parse(localStorage.getItem("booksInCart"));
+    const orderIndex = ordersInCart.findIndex((order) => order.title === title);
+
+    ++ordersInCart[orderIndex].count;
+    ordersInCart[orderIndex].totalPrice = +(
+      ordersInCart[orderIndex].totalPrice + price
+    ).toFixed(2);
+
+    localStorage.setItem("booksInCart", JSON.stringify(ordersInCart));
+    setBooksInCart(JSON.parse(localStorage.getItem("booksInCart")));
     setQuantity((prev) => prev + 1);
   };
   return (
@@ -58,7 +62,7 @@ export const Order = ({ title, price, count, totalPrice }) => {
               +
             </button>
           </td>
-          <td>{totalPrice} $</td>
+          <td>{totalPrice.toFixed(2)} $</td>
           <td>
             <img
               src={trash}
@@ -67,6 +71,7 @@ export const Order = ({ title, price, count, totalPrice }) => {
               height=""
               style={{ width: "32px" }}
               onClick={deleteOrder}
+              className="trash"
             />
           </td>
         </tr>

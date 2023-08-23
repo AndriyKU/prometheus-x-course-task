@@ -23,7 +23,7 @@ function App() {
   );
   const [username, setUsername] = useState("");
   useEffect(() => {
-    localStorage.setItem("booksInCart", JSON.stringify([]));
+    localStorage.setItem("booksInCart", "[]");
     setBooksInCart(JSON.parse(localStorage.getItem("booksInCart")));
 
     fetch("/prometheus-x-course-task/database/books.json")
