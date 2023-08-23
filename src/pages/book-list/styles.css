@@ -49,23 +49,23 @@
   text-shadow: 1px 1px 1px black;
 }
 
-.books-section {
-  /* display: flex;
+/* .books-section {
+  display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; */
-  /* padding: 0px 10%; */
+  justify-content: space-around; 
+  padding: 0px 10%; 
 
-  /* border: 40px inset brown;
-  outline: 20px outset brown; */
-  /* box-shadow: 0 0 40px 20px black inset;
+  border: 40px inset brown;
+  outline: 20px outset brown; 
+  box-shadow: 0 0 40px 20px black inset;
   border-left: 30px solid #7c460a;
   border-right: 30px solid #7c460a;
   border-bottom: 10px solid #b66e15;
-  border-top: 40px solid brown; */
-  /* background-color: antiquewhite;
+  border-top: 40px solid brown; 
+  background-color: antiquewhite;
   box-shadow: 11px 50px 50px 10px #b66e15 inset,
-    -21px 12px 7px 51px #7c460a inset; */
-}
+    -21px 12px 7px 51px #7c460a inset; 
+} */
 
 /*
 .scaffale {

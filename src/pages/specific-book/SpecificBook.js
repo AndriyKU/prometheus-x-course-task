@@ -3,8 +3,8 @@ import imageNotFound from "../../images/imageNotFound.png";
 import { Button } from "../../components/button/Button";
 import { useParams } from "react-router-dom";
 import { useBooks } from "../../contextAPI/useBooks";
-import { useRef, useState } from "react";
 import { useCart } from "../../contextAPI/useCart";
+import { useState } from "react";
 
 export const SpecificBook = () => {
   const { id } = useParams();

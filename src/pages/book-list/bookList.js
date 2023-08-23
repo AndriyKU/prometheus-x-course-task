@@ -28,9 +28,9 @@ export const BookList = () => {
   const handleSelect = ({ target: { value } }) => {
     setSelectValue(value);
   };
-  const quantityOfShelfs = Math.ceil(filteredBooks.length / 3);
+  /* const quantityOfShelfs = Math.ceil(filteredBooks.length / 3);
   const shelfs = Array(quantityOfShelfs, 1);
-  console.log(shelfs);
+
   const booksComponents = filteredBooks.map((book, i) => {
     return (
       <Book
@@ -43,7 +43,7 @@ export const BookList = () => {
         shortDescription={book.shortDescription}
       />
     );
-  });
+  });  */
   return (
     <main>
       <section className="filters-section">
