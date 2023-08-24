@@ -13,7 +13,7 @@ i colori, i font, e gli effetti (:hover, transition, :focus ...) possono essere 
 
 .wrapper {
   margin: 0 auto;
-  width: 30%;
+  width: 390px;
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@ i colori, i font, e gli effetti (:hover, transition, :focus ...) possono essere 
 }
 
 .signin__image {
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
   width: 158px;
@@ -34,12 +34,22 @@ i colori, i font, e gli effetti (:hover, transition, :focus ...) possono essere 
   border: 2px solid #888;
   margin-bottom: 40px;
   background-color: rgba(230, 236, 255, 0.5);
+  border-radius: 50%; */
+
+  width: 160px;
+  height: 160px;
+  border: 2px solid #888;
+  margin-bottom: 40px;
+  background-color: rgb(230 236 255);
   border-radius: 50%;
+  box-sizing: content-box;
 }
 
 .signin__image > img {
-  width: 160px;
-  height: 160px;
+  /* width: 160px;
+  height: 160px; */
+  width: 100%;
+  height: 100%;
 }
 
 .signin__form {
@@ -85,18 +95,27 @@ i colori, i font, e gli effetti (:hover, transition, :focus ...) possono essere 
   border: 2px solid rgb(65, 168, 62);
   background-color: rgba(65, 168, 62, 0.2);
 }
-
-/* @media screen and (min-width: 320px) {
+@media screen and (max-width: 400px) {
+  .wrapper {
+    width: 100%;
+    border-top: 6px solid #888;
+    border-bottom: 6px solid #888;
+    border-left-style: none;
+    border-right-style: none;
+  }
+}
+@media screen and (max-width: 320px) {
+  .wrapper {
+    height: 500px;
+  }
   .signin__form > input[type="text"] {
-
     width: calc(100% - 16px);
     margin-left: 8px;
     margin-right: 8px;
   }
 
-  .signin__image,
-  .signin__image > img {
+  .signin__image {
     width: 200px;
     height: 200px;
   }
-} */
+}
