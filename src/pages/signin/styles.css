@@ -95,18 +95,18 @@ i colori, i font, e gli effetti (:hover, transition, :focus ...) possono essere 
   border: 2px solid rgb(65, 168, 62);
   background-color: rgba(65, 168, 62, 0.2);
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 401px) {
   .wrapper {
     width: 100%;
-    border-top: 6px solid #888;
-    border-bottom: 6px solid #888;
-    border-left-style: none;
-    border-right-style: none;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 321px) {
   .wrapper {
     height: 500px;
+    border-top: 12px solid #888;
+    border-bottom: 12px solid #888;
+    border-left-style: none;
+    border-right-style: none;
   }
   .signin__form > input[type="text"] {
     width: calc(100% - 16px);
